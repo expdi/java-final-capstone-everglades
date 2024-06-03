@@ -18,7 +18,7 @@ public class Artist extends AbstractEntity {
     private String firstName;
     private String lastName;
     @JsonIgnore
-    @ManyToMany(mappedBy = "artistList", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany( mappedBy = "artistList" )
     private Set<Track> trackList;
 
 

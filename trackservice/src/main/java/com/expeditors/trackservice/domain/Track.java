@@ -18,11 +18,20 @@ public class Track extends AbstractEntity {
     private double durationInMinutes;
     @Enumerated(value=EnumType.STRING)
     private MediaType type;
-    @JsonIgnore
-    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
 
+    @ManyToMany (
+            fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE}
+    )
+    @JoinTable(
+            name = "track_artist",
+            joinColumns = @JoinColumn(name = "track_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "artist_id", referencedColumnName = "id")
+    )
     private Set<Artist> artistList;
     private LocalDate issueDate;
+
+
 
     public Track() {
     }

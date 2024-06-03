@@ -5,3 +5,6 @@ spring:
   profiles:
     active: IN_MEMORY, POSTGRE
 
+  jpa:
+    show-sql: true
+

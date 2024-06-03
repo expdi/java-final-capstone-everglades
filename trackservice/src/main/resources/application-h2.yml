@@ -1,6 +1,6 @@
 logging:
   level:
-    com.zaxxer.hikari: TRACE
+    ## com.zaxxer.hikari: TRACE
     org.springframework.jdbc: DEBUG
 
 spring:
