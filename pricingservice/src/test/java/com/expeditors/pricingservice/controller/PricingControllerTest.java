@@ -34,4 +34,16 @@ public class PricingControllerTest {
         assertEquals(2.0, priceResponse.getBody());
     }
 
+
+    @Test
+    void getBothLimits_ReturnsOKAndLimits(){
+        Mockito.doReturn("Lower limit: 1.0, Upper Limit: 5.0").when(pricingService).getBothLimits();
+
+        var limitsResponse = controller.getBothLimits();
+
+        assertEquals(limitsResponse.getStatusCode(), HttpStatus.OK);
+        assertInstanceOf(String.class, limitsResponse.getBody());
+        assertEquals("Lower limit: 1.0, Upper Limit: 5.0", limitsResponse.getBody());
+    }
+
 }
