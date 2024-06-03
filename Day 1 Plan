@@ -1,0 +1,18 @@
+Day 1: Antonio, Arjun
+Create database on Postgres and H2
+Populate dummy data for both
+Implement Spring Data JPA on application-postgres and application-h2 files
+Modify entities to work with Spring
+Create Repos for the entities
+Adjust annotations in service and controllers
+Create/Modify tests to achieve 80% coverage
+
+Day 1: Antony, Alan
+Modify pricing service to include limits and include end-point upper and lower limits will allow access for all users
+Write tests on controller and service to include limits
+Security implementation
+
+Day 1: Julio
+Review commits 
+Research security implementation for the complete application
+
