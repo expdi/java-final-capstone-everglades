@@ -1,12 +1,12 @@
 package com.expeditors.trackservice.service;
 
-import com.expeditors.trackservice.domain.Entity;
+import com.expeditors.trackservice.domain.AbstractEntity;
 import com.expeditors.trackservice.repository.BaseRepository;
 
 import java.util.List;
 import java.util.Optional;
 
-public class AbstractBaseService<TEntity extends Entity>
+public class AbstractBaseService<TEntity extends AbstractEntity>
         implements BaseService<TEntity> {
 
     private final BaseRepository<TEntity> repository;
