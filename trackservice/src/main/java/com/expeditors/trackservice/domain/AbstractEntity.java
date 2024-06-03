@@ -1,11 +1,17 @@
 package com.expeditors.trackservice.domain;
 
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
 
+@MappedSuperclass
 public abstract class AbstractEntity {
 
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     protected int id;
 
 
