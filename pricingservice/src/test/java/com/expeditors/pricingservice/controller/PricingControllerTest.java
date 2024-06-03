@@ -9,7 +9,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertInstanceOf;
 
 @ExtendWith(MockitoExtension.class)
 public class PricingControllerTest {
@@ -45,9 +46,5 @@ public class PricingControllerTest {
         assertInstanceOf(String.class, limitsResponse.getBody());
         assertEquals("Lower limit: 1.0, Upper Limit: 5.0", limitsResponse.getBody());
     }
-
-
-
-
 
 }
