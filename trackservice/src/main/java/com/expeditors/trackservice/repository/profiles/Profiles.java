@@ -9,3 +9,4 @@ public class Profiles {
     public static final String POSTGRE = "POSTGRE";
     public static final String H2 = "H2";
 }
+
