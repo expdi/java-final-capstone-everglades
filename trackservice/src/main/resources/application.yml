@@ -1,9 +1,32 @@
 server:
   port: 8000
-
 spring:
+  h2:
+    console:
+      enabled: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:/sql/postgres/schema.sql
+      data-locations: classpath:/sql/postgres/data.sql
   application:
     name: Track Service
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    hibernate:
+      ddl-auto: none
+    generate-ddl: false
+    defer-datasource-initialization: true
+  datasource:
+    url: jdbc:h2:mem:testdb;AUTO_RECONNECT=TRUE;MODE=PostgreSQL;
   profiles:
     active: IN_MEMORY
+logging:
+  level:
+    com.zaxxer.hikari: TRACE
+    org.springframework.jdbc: DEBUG
+
 

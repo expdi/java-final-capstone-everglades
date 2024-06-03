@@ -1,5 +1,7 @@
 package com.expeditors.trackservice.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
@@ -8,13 +10,17 @@ import java.util.Objects;
 import java.util.Set;
 
 import static java.lang.StringTemplate.STR;
-
+@Entity
 public class Track extends AbstractEntity {
 
     private String title;
     private String album;
     private double durationInMinutes;
+    @Enumerated(value=EnumType.STRING)
     private MediaType type;
+    @JsonIgnore
+    @ManyToMany (cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+
     private Set<Artist> artistList;
     private LocalDate issueDate;
 
