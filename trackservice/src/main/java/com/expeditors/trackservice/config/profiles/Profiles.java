@@ -8,5 +8,7 @@ public class Profiles {
     //DB
     public static final String POSTGRE = "POSTGRE";
     public static final String H2 = "H2";
+
+    public static final String RUNNER  = "RUNNER";
 }
 
