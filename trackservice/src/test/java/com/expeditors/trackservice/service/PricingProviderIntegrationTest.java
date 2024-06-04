@@ -22,8 +22,11 @@ public class PricingProviderIntegrationTest {
     @Test
     public void testGetAll() {
 
-        var response = testRestTemplate.getForEntity(
-                URI.create(PRICING_URL), Double.class);
+        var response = testRestTemplate
+                .getForEntity(
+                        URI.create(PRICING_URL),
+                        Double.class
+                );
 
         assertEquals(response.getStatusCode(), HttpStatus.OK);
         assertNotNull(response.getBody());
