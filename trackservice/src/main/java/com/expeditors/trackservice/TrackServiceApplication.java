@@ -16,20 +16,20 @@ import java.util.HashSet;
 import java.util.List;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.expeditors.trackservice.config.profiles.Profiles.H2;
+import static com.expeditors.trackservice.config.profiles.Profiles.*;
 
 @SpringBootApplication
-public class TrackserviceApplication {
+public class TrackServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(TrackserviceApplication.class, args);
+        SpringApplication.run(TrackServiceApplication.class, args);
     }
 
 
 }
 
 @Component
-@Profile("!" + H2)
+@Profile(RUNNER)
 class Runner implements CommandLineRunner{
 
     private final TrackService trackService;
@@ -74,15 +74,13 @@ class Runner implements CommandLineRunner{
 
         trackList.get(0).getArtistList().addAll(List.of(artistList.get(1),artistList.get(2)));
         trackList.get(2).getArtistList().addAll(List.of(artistList.get(4),artistList.get(5)));
-        trackList.get(4).getArtistList().addAll(List.of(artistList.get(4),artistList.get(4)));
+        trackList.get(4).getArtistList().add(artistList.get(4));
 
-//        artistList.forEach(artistService::addEntity);
         trackList.forEach(trackService::addEntity);
 
         List<Track> tracks = trackService.getAllEntities();
         for(Track track : tracks) {
-            System.out.println("album: " + track.getAlbum() + ", title: " + track.getTitle()
-            + ", type: " + track.getType());
+            System.out.println("album: " + track.getAlbum() + ", title: " + track.getTitle() + ", type: " + track.getType());
         }
     }
 }

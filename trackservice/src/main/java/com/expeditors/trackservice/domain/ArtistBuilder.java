@@ -1,5 +1,6 @@
 package com.expeditors.trackservice.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class ArtistBuilder {
@@ -7,7 +8,7 @@ public class ArtistBuilder {
     private int id;
     private String firstName;
     private String lastName;
-    private Set<Track> trackList;
+    private Set<Track> trackList = new HashSet<>();
 
 
     public Artist build(){
