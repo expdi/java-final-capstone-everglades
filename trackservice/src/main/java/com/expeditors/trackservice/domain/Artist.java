@@ -3,6 +3,7 @@ package com.expeditors.trackservice.domain;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.ManyToMany;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -18,7 +19,10 @@ public class Artist extends AbstractEntity {
     private String firstName;
     private String lastName;
     @JsonIgnore
-    @ManyToMany( mappedBy = "artistList" )
+    @ManyToMany(
+            mappedBy = "artistList" ,
+            fetch = FetchType.LAZY
+    )
     private Set<Track> trackList;
 
 

@@ -3,7 +3,7 @@ server.port: 8000
 spring:
   application.name: Track Service
   profiles:
-    active: IN_MEMORY, POSTGRE
+    active: JPA, POSTGRE
 
   jpa:
     show-sql: true

@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.*;
 import java.util.function.Predicate;
 
-import static com.expeditors.trackservice.repository.profiles.Profiles.IN_MEMORY;
+import static com.expeditors.trackservice.config.profiles.Profiles.IN_MEMORY;
 
 @Repository
 @Profile(IN_MEMORY)

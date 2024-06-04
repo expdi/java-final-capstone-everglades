@@ -8,14 +8,14 @@ import com.expeditors.trackservice.service.TrackService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cglib.core.Local;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+
+import static com.expeditors.trackservice.config.profiles.Profiles.H2;
 
 @SpringBootApplication
 public class TrackserviceApplication {
@@ -28,7 +28,7 @@ public class TrackserviceApplication {
 }
 
 @Component
-@Profile("!test")
+@Profile("!" + H2)
 class Runner implements CommandLineRunner{
 
     private final TrackService trackService;
@@ -74,7 +74,7 @@ class Runner implements CommandLineRunner{
         trackList.get(2).getArtistList().addAll(List.of(artistList.get(4),artistList.get(5)));
         trackList.get(4).getArtistList().addAll(List.of(artistList.get(4),artistList.get(4)));
 
-        artistList.forEach(artistService::addEntity);
+//        artistList.forEach(artistService::addEntity);
         trackList.forEach(trackService::addEntity);
     }
 }
