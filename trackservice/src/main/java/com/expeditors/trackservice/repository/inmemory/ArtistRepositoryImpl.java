@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static com.expeditors.trackservice.repository.profiles.Profiles.IN_MEMORY;
+import static com.expeditors.trackservice.config.profiles.Profiles.IN_MEMORY;
 
 @Repository
 @Profile(IN_MEMORY)

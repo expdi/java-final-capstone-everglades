@@ -6,6 +6,7 @@ import com.expeditors.trackservice.domain.Track;
 import com.expeditors.trackservice.repository.TrackRepository;
 import com.expeditors.trackservice.service.AbstractBaseService;
 import com.expeditors.trackservice.service.TrackService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

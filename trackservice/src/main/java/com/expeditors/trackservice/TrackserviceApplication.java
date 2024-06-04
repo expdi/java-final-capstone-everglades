@@ -5,6 +5,7 @@ import com.expeditors.trackservice.domain.MediaType;
 import com.expeditors.trackservice.domain.Track;
 import com.expeditors.trackservice.service.ArtistService;
 import com.expeditors.trackservice.service.TrackService;
+import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -41,7 +42,7 @@ class Runner implements CommandLineRunner{
         this.trackService = trackService;
         this.artistService = artistService;
     }
-
+    @Transactional
     @Override
     public void run(String... args) throws Exception {
 

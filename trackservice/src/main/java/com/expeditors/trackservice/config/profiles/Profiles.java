@@ -1,4 +1,4 @@
-package com.expeditors.trackservice.repository.profiles;
+package com.expeditors.trackservice.config.profiles;
 
 public class Profiles {
 
