@@ -15,12 +15,14 @@ import java.util.Set;
 
 import static com.expeditors.trackservice.config.profiles.Profiles.H2;
 import static com.expeditors.trackservice.config.profiles.Profiles.JPA;
+import static com.expeditors.trackservice.config.profiles.Profiles.POSTGRE;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @SpringBootTest(webEnvironment = NONE)
-@ActiveProfiles(profiles = {JPA, H2})
+//@ActiveProfiles(profiles = {JPA, H2})
+@ActiveProfiles(profiles = {JPA, POSTGRE})
 public class TrackJpaRepositoryAdapterTest {
 
     @Autowired
