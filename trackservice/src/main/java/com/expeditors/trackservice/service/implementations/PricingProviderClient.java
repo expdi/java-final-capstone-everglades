@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestClient;
 
+import java.util.Base64;
 import java.util.Objects;
 
 @Service
@@ -37,11 +38,13 @@ public class PricingProviderClient implements PricingProvider {
     }
 
     private RestClient createClientForAddress(){
+        String authHeader = "Basic " + Base64.getEncoder().encodeToString(System.getenv("credentials").getBytes());
 
         return RestClient.builder()
                 .baseUrl(PricingProviderClient.PRICING_URL)
                 .defaultHeader("Accept", "application/json")
                 .defaultHeader("Content-Type", "application/json")
+                .defaultHeader("Authorization", authHeader)
                 .build();
     }
 }
