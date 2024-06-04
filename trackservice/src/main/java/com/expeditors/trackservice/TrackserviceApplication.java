@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
+import org.springframework.transaction.annotation.Transactional;
 
 import static com.expeditors.trackservice.config.profiles.Profiles.H2;
 
@@ -43,6 +44,7 @@ class Runner implements CommandLineRunner{
     }
 
     @Override
+    @Transactional
     public void run(String... args) throws Exception {
 
         var dateList = List.of(
@@ -76,5 +78,11 @@ class Runner implements CommandLineRunner{
 
 //        artistList.forEach(artistService::addEntity);
         trackList.forEach(trackService::addEntity);
+
+        List<Track> tracks = trackService.getAllEntities();
+        for(Track track : tracks) {
+            System.out.println("album: " + track.getAlbum() + ", title: " + track.getTitle()
+            + ", type: " + track.getType());
+        }
     }
 }
