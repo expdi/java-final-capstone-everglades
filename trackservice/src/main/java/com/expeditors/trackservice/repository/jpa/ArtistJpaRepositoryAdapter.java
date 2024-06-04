@@ -14,8 +14,8 @@ import static com.expeditors.trackservice.config.profiles.Profiles.JPA;
 @Repository
 @Profile(JPA)
 public class ArtistJpaRepositoryAdapter
-                implements ArtistRepository {
-    @Override
+            implements ArtistRepository {
+        @Override
     public List<Artist> getArtistByName(String firstName) {
         return null;
     }

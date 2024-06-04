@@ -19,12 +19,23 @@ public interface TrackJpaRepository
 
     @Query("SELECT t FROM Track t LEFT JOIN FETCH t.artistList")
     List<Track> findAllIncludingArtist();
+
     @Query("SELECT t FROM Track t LEFT JOIN FETCH t.artistList WHERE t.id = :id")
     Optional<Track> findByIdIncludingArtist(int id);
 
-//    @Query("SELECT t FROM Track t LEFT JOIN t.artistList WHERE t.type = :type")
+    @Query("SELECT t FROM Track t LEFT JOIN t.artistList WHERE t.type = :type")
     List<Track> findAllByType(MediaType type);
 
     @Query("SELECT t FROM Track t LEFT JOIN t.artistList WHERE YEAR(t.issueDate) = :year")
     List<Track> findAllByYear(int year);
+
+    @Query("SELECT t FROM Track t LEFT JOIN t.artistList WHERE t.durationInMinutes > :durationInMinutes")
+    List<Track> findAllByDurationInMinutesGreaterThan(double durationInMinutes);
+
+    @Query("SELECT t FROM Track t LEFT JOIN t.artistList WHERE t.durationInMinutes = :durationInMinutes")
+    List<Track> findAllByDurationInMinutesEquals(double durationInMinutes);
+
+    @Query("SELECT t FROM Track t LEFT JOIN t.artistList WHERE t.durationInMinutes < :durationInMinutes")
+    List<Track> findAllByDurationInMinutesLessThan(double durationInMinutes);
+
 }

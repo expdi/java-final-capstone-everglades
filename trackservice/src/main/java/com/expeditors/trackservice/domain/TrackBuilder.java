@@ -1,6 +1,7 @@
 package com.expeditors.trackservice.domain;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.Set;
 
 public class TrackBuilder {
@@ -10,7 +11,7 @@ public class TrackBuilder {
     private String album;
     private double durationInMinutes;
     private MediaType type;
-    private Set<Artist> artistList;
+    private Set<Artist> artistList = new HashSet<>();
     private LocalDate issueDate;
 
 

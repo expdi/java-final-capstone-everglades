@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import static com.expeditors.trackservice.config.profiles.Profiles.JPA;
 
@@ -42,24 +43,28 @@ public class TrackJpaRepositoryAdapter
 
     @Override
     public List<Track> getTracksByYear(int year) {
-        return null;
+        return repo.findAllByYear(year);
     }
 
     @Override
-    public List<Artist> getArtistsByTrack(int trackId) {
-        return null;
-    }
-    @Override
     public List<Track> getTracksByDurationGreaterThan(double duration) {
-        return null;
+        return repo.findAllByDurationInMinutesGreaterThan(duration);
     }
     @Override
     public List<Track> getTracksByDurationEqualsTo(double duration) {
-        return null;
+        return repo.findAllByDurationInMinutesEquals(duration);
     }
     @Override
     public List<Track> getTracksByDurationLessThan(double duration) {
-        return null;
+        return repo.findAllByDurationInMinutesLessThan(duration);
+    }
+    @Override
+    public List<Artist> getArtistsByTrack(int trackId) {
+        return repo.findByIdIncludingArtist(trackId)
+                .map(Track::getArtistList)
+                .orElse(Set.of())
+                .stream()
+                .toList();
     }
 
 
