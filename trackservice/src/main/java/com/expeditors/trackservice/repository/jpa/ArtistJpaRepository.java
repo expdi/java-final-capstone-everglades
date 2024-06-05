@@ -14,7 +14,7 @@ import java.util.Optional;
 @Profile("JPA")
 public interface ArtistJpaRepository extends JpaRepository<Artist, Integer>{
 
-    @Query("SELECT a FROM Artist a WHERE a.firstName = :name")
+    @Query("SELECT a FROM Artist a LEFT JOIN FETCH a.trackList WHERE a.firstName = :name")
     List<Artist> getArtistByName(String name);
 
     @Query("SELECT a FROM Artist a LEFT JOIN FETCH a.trackList WHERE a.id = :id")

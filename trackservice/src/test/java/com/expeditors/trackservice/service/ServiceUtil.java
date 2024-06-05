@@ -57,4 +57,21 @@ public class ServiceUtil {
                         .build()
         ));
     }
+
+    public static List<Artist> generateArtists(){
+        return new ArrayList<Artist>(List.of(
+                Artist.builder()
+                        .firstName("Taylor")
+                        .lastName("Swift")
+                        .build(),
+                Artist.builder()
+                        .firstName("Pink")
+                        .lastName("Floyd")
+                        .build(),
+                Artist.builder()
+                        .firstName("Jennifer")
+                        .lastName("Lopez")
+                        .build()
+        ));
+    }
 }
