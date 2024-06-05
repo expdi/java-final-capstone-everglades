@@ -38,7 +38,7 @@ public class TrackController {
                 .body(
                         trackService.getAllEntities()
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -50,7 +50,7 @@ public class TrackController {
        return trackService.getEntityById(trackId)
                .map(t -> ResponseEntity
                        .ok()
-                       .body(TrackResponse.fromTrack(t, pricingProvider.getPrice())))
+                       .body(TrackResponse.fromTrack(t, pricingProvider)))
                .orElse(ResponseEntity.notFound().build());
     }
 
@@ -63,7 +63,7 @@ public class TrackController {
                 .body(
                         trackService.getTracksByMediaType(mediaType)
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -77,7 +77,7 @@ public class TrackController {
                 .body(
                         trackService.getTracksByYear(year)
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -91,7 +91,7 @@ public class TrackController {
                 .body(
                         trackService.getArtistByTracks(trackId)
                                 .stream()
-                                .map(a -> ArtistResponse.fromArtist(a, pricingProvider.getPrice()))
+                                .map(a -> ArtistResponse.fromArtist(a, pricingProvider))
                                 .toList()
                 );
     }
@@ -105,7 +105,7 @@ public class TrackController {
                 .body(
                         trackService.getTracksByDurationGreaterThan(duration)
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -119,7 +119,7 @@ public class TrackController {
                 .body(
                         trackService.getTracksByDurationLessThan(duration)
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -133,7 +133,7 @@ public class TrackController {
                 .body(
                         trackService.getTracksByDurationEqualsTo(duration)
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -158,7 +158,7 @@ public class TrackController {
                 trackRequest.toTrack(result.artistList()));
         return ResponseEntity
                 .ok()
-                .body(TrackResponse.fromTrack(trackCreated, pricingProvider.getPrice()));
+                .body(TrackResponse.fromTrack(trackCreated, pricingProvider));
     }
 
     @PutMapping("/{trackId}")

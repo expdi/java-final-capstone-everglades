@@ -3,6 +3,7 @@ package com.expeditors.trackservice.dto;
 import com.expeditors.trackservice.domain.Artist;
 import com.expeditors.trackservice.domain.MediaType;
 import com.expeditors.trackservice.domain.Track;
+import com.expeditors.trackservice.service.PricingProvider;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
@@ -44,7 +45,7 @@ public class TrackResponse {
 
     public static TrackResponse fromTrack(
             Track track,
-            double price){
+            PricingProvider pricingService){
 
         var artistList = track.getArtistList()
                 .stream()
@@ -60,7 +61,7 @@ public class TrackResponse {
                 .builder()
                 .id(track.getId())
                 .durationInMinutes(track.getDurationInMinutes())
-                .price(price)
+                .price(pricingService.getPrice())
                 .title(track.getTitle())
                 .album(track.getAlbum())
                 .type(track.getType())
