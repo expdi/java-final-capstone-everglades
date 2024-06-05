@@ -1,4 +1,5 @@
 server.port: 8000
+credentials: ${CREDENTIALS}
 
 spring:
   application.name: Track Service
