@@ -1,0 +1,10 @@
+server.port: 8000
+
+spring:
+  application.name: Track Service
+  profiles:
+    active: JPA, POSTGRE, RUNNER
+
+  jpa:
+    show-sql: true
+
