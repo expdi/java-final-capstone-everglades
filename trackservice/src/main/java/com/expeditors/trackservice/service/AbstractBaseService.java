@@ -1,12 +1,13 @@
 package com.expeditors.trackservice.service;
 
-import com.expeditors.trackservice.domain.Entity;
+import com.expeditors.trackservice.domain.AbstractEntity;
 import com.expeditors.trackservice.repository.BaseRepository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
-public class AbstractBaseService<TEntity extends Entity>
+public class AbstractBaseService<TEntity extends AbstractEntity>
         implements BaseService<TEntity> {
 
     private final BaseRepository<TEntity> repository;
@@ -22,6 +23,10 @@ public class AbstractBaseService<TEntity extends Entity>
 
     @Override
     public boolean updateEntity(TEntity entity) {
+
+        if(Objects.isNull(entity)){
+            throw new IllegalArgumentException("Null Entity Cannot be Added");
+        }
         return repository.updateEntity(entity);
     }
 
@@ -32,6 +37,10 @@ public class AbstractBaseService<TEntity extends Entity>
 
     @Override
     public TEntity addEntity(TEntity entity) {
+
+        if(Objects.isNull(entity)){
+            throw new IllegalArgumentException("Null Entity Cannot be Added");
+        }
         return repository.addEntity(entity);
     }
 

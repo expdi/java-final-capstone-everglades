@@ -3,6 +3,7 @@ package com.expeditors.trackservice.repository;
 import com.expeditors.trackservice.domain.Artist;
 import com.expeditors.trackservice.domain.MediaType;
 import com.expeditors.trackservice.domain.Track;
+import com.expeditors.trackservice.repository.BaseRepository;
 
 import java.util.List;
 
