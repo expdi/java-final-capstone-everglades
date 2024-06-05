@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
 
@@ -75,7 +76,7 @@ public class TrackJpaRepositoryAdapter
     @Override
     public boolean updateEntity(Track entity) {
 
-        var hasEntityInDb = repo.existsById(entity.getId());
+       var hasEntityInDb = repo.existsById(entity.getId());
         if(!hasEntityInDb){
             return false;
         }

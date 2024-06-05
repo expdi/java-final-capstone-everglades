@@ -23,6 +23,10 @@ public class AbstractBaseService<TEntity extends AbstractEntity>
 
     @Override
     public boolean updateEntity(TEntity entity) {
+
+        if(Objects.isNull(entity)){
+            throw new IllegalArgumentException("Null Entity Cannot be Added");
+        }
         return repository.updateEntity(entity);
     }
 
@@ -33,6 +37,7 @@ public class AbstractBaseService<TEntity extends AbstractEntity>
 
     @Override
     public TEntity addEntity(TEntity entity) {
+
         if(Objects.isNull(entity)){
             throw new IllegalArgumentException("Null Entity Cannot be Added");
         }

@@ -103,16 +103,6 @@ public class TrackRepositoryTest {
     }
 
 
-    @Test
-    void updateEntity_ThrowsIllegalArgumentException_WhenEntityIsNull(){
-
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> repository.updateEntity(null)
-        );
-    }
-
-    @Test
     void updateEntity_ReturnsTrue_WithValidObject(){
 
         var newTrack = Track.builder()
@@ -171,15 +161,6 @@ public class TrackRepositoryTest {
         var tracksFromArtist = artist1.getTrackList();
         assertThat(tracksFromArtist, hasSize(1));
         assertThat(tracksFromArtist, containsInAnyOrder(track2));
-    }
-
-
-    @Test
-    void addEntity_ThrowsIllegalArgumentException_WhenEntityIsNull(){
-        Assertions.assertThrows(
-                IllegalArgumentException.class,
-                () -> repository.addEntity(null)
-        );
     }
 
     @Test

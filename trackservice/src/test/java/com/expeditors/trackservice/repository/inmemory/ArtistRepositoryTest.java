@@ -79,14 +79,6 @@ public class ArtistRepositoryTest {
     }
 
     @Test
-    void updateEntity_ShouldThrowIllegalArgumentException_WhenEntityIsNull()
-    {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> artistRepository.updateEntity(null));
-    }
-
-    @Test
     void updateEntity_ShouldRunSuccessful_WithValidObject(){
 
         Mockito.doReturn(artist2)
@@ -115,12 +107,6 @@ public class ArtistRepositoryTest {
 
         var finalArtist = artistRepository.addEntity(artist2);
         assertEquals(finalArtist, artist2);
-    }
-
-    @Test
-    void addEntity_ShouldThrowIllegalArgumentException_WhenEntityIsNull(){
-        assertThrows(IllegalArgumentException.class,
-                () -> artistRepository.addEntity(null));
     }
 
     @Test

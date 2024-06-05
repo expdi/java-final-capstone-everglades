@@ -3,7 +3,6 @@ package com.expeditors.trackservice;
 import com.expeditors.trackservice.domain.Artist;
 import com.expeditors.trackservice.domain.MediaType;
 import com.expeditors.trackservice.domain.Track;
-import com.expeditors.trackservice.service.ArtistService;
 import com.expeditors.trackservice.service.TrackService;
 import jakarta.transaction.Transactional;
 import org.springframework.boot.CommandLineRunner;
@@ -15,9 +14,8 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.List;
-import org.springframework.transaction.annotation.Transactional;
 
-import static com.expeditors.trackservice.config.profiles.Profiles.*;
+import static com.expeditors.trackservice.config.profiles.Profiles.RUNNER;
 
 @SpringBootApplication
 public class TrackServiceApplication {
@@ -25,8 +23,6 @@ public class TrackServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(TrackServiceApplication.class, args);
     }
-
-
 }
 
 @Component
@@ -34,18 +30,13 @@ public class TrackServiceApplication {
 class Runner implements CommandLineRunner{
 
     private final TrackService trackService;
-    private final ArtistService artistService;
 
     Runner(
-            TrackService trackService,
-           ArtistService artistService) {
-
+            TrackService trackService){
         this.trackService = trackService;
-        this.artistService = artistService;
     }
     @Transactional
     @Override
-    @Transactional
     public void run(String... args) throws Exception {
 
         var dateList = List.of(
@@ -75,13 +66,8 @@ class Runner implements CommandLineRunner{
 
         trackList.get(0).getArtistList().addAll(List.of(artistList.get(1),artistList.get(2)));
         trackList.get(2).getArtistList().addAll(List.of(artistList.get(4),artistList.get(5)));
-        trackList.get(4).getArtistList().add(artistList.get(4));
+        trackList.get(4).getArtistList().addAll(List.of(artistList.get(4),artistList.get(4)));
 
         trackList.forEach(trackService::addEntity);
-
-        List<Track> tracks = trackService.getAllEntities();
-        for(Track track : tracks) {
-            System.out.println("album: " + track.getAlbum() + ", title: " + track.getTitle() + ", type: " + track.getType());
-        }
     }
 }

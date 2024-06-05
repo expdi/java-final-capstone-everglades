@@ -130,7 +130,6 @@ public class TrackJpaRepositoryAdapterTest {
         );
     }
 
-
     @Test
     @Transactional
     void updateEntity_ShouldRunSuccessful_WhenValidEntity(){

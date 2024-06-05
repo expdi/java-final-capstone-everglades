@@ -33,6 +33,11 @@ public class ArtistJpaRepositoryAdapter implements ArtistRepository {
         return repo.findAll();
     }
     @Override
+    public Optional<Artist> getEntityById(int id) {
+        return repo.findById(id);
+
+    }
+    @Override
     public Artist addEntity(Artist entity) {
         return repo.save(entity);
     }
@@ -58,9 +63,5 @@ public class ArtistJpaRepositoryAdapter implements ArtistRepository {
         return true;
     }
 
-    @Override
-    public Optional<Artist> getEntityById(int id) {
-        return repo.findById(id);
 
-    }
 }
