@@ -31,7 +31,7 @@ public class ArtistController {
                 .ok()
                 .body(artistService.getAllEntities()
                         .stream()
-                        .map(a -> ArtistResponse.fromArtist(a, pricingProvider.getPrice()))
+                        .map(a -> ArtistResponse.fromArtist(a, pricingProvider))
                         .toList());
     }
 
@@ -43,7 +43,8 @@ public class ArtistController {
                 .map(
                         a -> ResponseEntity
                                 .ok()
-                                .body(ArtistResponse.fromArtist(a, pricingProvider.getPrice())))
+                                .body(ArtistResponse.fromArtist(a, pricingProvider))
+                )
                 .orElse(ResponseEntity.notFound().build());
     }
 
@@ -56,7 +57,7 @@ public class ArtistController {
                 .body(
                         artistService.getArtistByName(artistName)
                                 .stream()
-                                .map(a -> ArtistResponse.fromArtist(a, pricingProvider.getPrice()))
+                                .map(a -> ArtistResponse.fromArtist(a, pricingProvider))
                                 .toList()
                 );
 
@@ -71,7 +72,7 @@ public class ArtistController {
                 .body(
                         artistService.getTracksByArtistId(artistId)
                                 .stream()
-                                .map(t -> TrackResponse.fromTrack(t, pricingProvider.getPrice()))
+                                .map(t -> TrackResponse.fromTrack(t, pricingProvider))
                                 .toList()
                 );
     }
@@ -84,7 +85,7 @@ public class ArtistController {
         var artistCreated = artistService.addEntity(artistRequest.toArtist());
         return ResponseEntity
                 .ok()
-                .body(ArtistResponse.fromArtist(artistCreated, pricingProvider.getPrice()));
+                .body(ArtistResponse.fromArtist(artistCreated, pricingProvider));
 
     }
 
