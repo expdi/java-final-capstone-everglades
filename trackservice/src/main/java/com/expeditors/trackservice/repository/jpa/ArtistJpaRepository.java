@@ -17,6 +17,6 @@ public interface ArtistJpaRepository extends JpaRepository<Artist, Integer>{
     @Query("SELECT a FROM Artist a LEFT JOIN FETCH a.trackList WHERE a.firstName = :name")
     List<Artist> getArtistByName(String name);
 
-    @Query("SELECT a FROM Artist a LEFT JOIN FETCH a.trackList WHERE a.id = :id")
+    @Query("SELECT tt FROM Track tt LEFT JOIN FETCH tt.artistList a WHERE a.id = :id")
     List<Track> getTracksByArtistId(int id);
 }
