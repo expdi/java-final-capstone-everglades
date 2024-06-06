@@ -24,12 +24,14 @@ Properties used to configure SSL trust material are under the `spring.ssbundle` 
 - `spring.ssl.bundle.pem` can be used to configure bundles using PEM-encoded text files.
 
 ### Key Tool Certificate Generation Command
-```bash
-# Format
-keytool -genkeypair -alias `alias-name` -keyalg `key-alrgorithm-to-use: default: RSA` -keysize `Default 2048` -storetype `PKCS12` -keystore `name-of-the-store`
 
-#Example
- -genkeypair -alias pricing-ssl -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore pricing-ssl.p12
+#### Format
+```
+keytool -genkeypair -alias `alias-name` -keyalg `key-alrgorithm-to-use: default: RSA` -keysize `Default 2048` -storetype `PKCS12` -keystore `name-of-the-store`
+```
+#### Example
+```bash
+ keytool -genkeypair -alias pricing-ssl -keyalg RSA -keysize 2048 -storetype PKCS12 -keystore pricing-ssl.p12
 ```
 ### Properties Configuration
 
@@ -89,7 +91,7 @@ In order to set up ssl we need to:
     }
 
   ``` 
-- Set up redirection for http comming up to our server by setting a connector
+- Set up redirection for http coming up to our server by setting a connector
   ```java
     private Connector createHttpConnector() {
     Connector connector = new Connector(CONNECTOR_PROTOCOL);
@@ -108,7 +110,7 @@ certificate we created on the store. This will allow spring to recognize that
 as a trusted certificate
 
 ```bash
-keytool -importcert -keystore larkUTrustStore.p12 -storepass password -alias courserating -file /di/deliveries/current/expeditors/backend/02-26-2024/ExpeditorsBackend/code/BackEnd/CourseRatingService/src/main/resources/courseRatingPublicKey.cer
+keytool -import -noprompt -trustcacerts -alias ALIASNAME -file FILENAME_OF_THE_INSTALLED_CERTIFICATE -keystore PATH_TO_CACERTS_FILE -storepass PASSWORD
 ```
 
 ```bash

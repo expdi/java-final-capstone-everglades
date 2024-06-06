@@ -34,9 +34,7 @@ public class SecurityConfig {
               .roles("USER")
               .build();
 
-      var userDetailsService = new InMemoryUserDetailsManager(normaluser);
-
-      return userDetailsService;
+       return new InMemoryUserDetailsManager(normaluser);
    }
 
    @Bean
