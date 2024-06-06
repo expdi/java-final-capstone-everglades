@@ -96,7 +96,6 @@ public class ArtistControllerUnitTest {
     void addArtist_ReturnsOk(){
         var artistRequest = ArtistRequest.builder().firstName("A1").build();
 
-        setUpMockForPricingService();
         Mockito.doReturn(artist1)
                 .when(artistService).addEntity(any());
 

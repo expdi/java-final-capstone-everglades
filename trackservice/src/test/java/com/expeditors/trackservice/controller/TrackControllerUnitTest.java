@@ -53,7 +53,7 @@ public class TrackControllerUnitTest {
     void getAllTracks_RunsSuccessfully() {
         var l1 = List.of(track1, track2);
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(l1)
                 .when(trackService).getAllEntities();
 
@@ -78,7 +78,7 @@ public class TrackControllerUnitTest {
         track1.getArtistList().add(artist1);
         track1.getArtistList().add(artist2);
 
-        setUpMockForPricingService();
+
         setUpMockForEntityById(Optional.of(track1));
 
         var response = trackController.getTrackById(1);
@@ -88,7 +88,7 @@ public class TrackControllerUnitTest {
     @Test
     void getTrackByMediaType_RunsSuccessfully(){
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(List.of(track1))
                 .when(trackService).getTracksByMediaType(any());
 
@@ -99,7 +99,7 @@ public class TrackControllerUnitTest {
     @Test
     void getTracksByYear_RunsSuccessfully(){
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(List.of(track1))
                 .when(trackService).getTracksByYear(anyInt());
 
@@ -110,7 +110,7 @@ public class TrackControllerUnitTest {
     @Test
     void getTracksByArtist_RunsSuccessfully(){
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(List.of(artist1))
                 .when(trackService).getArtistByTracks(anyInt());
 
@@ -121,7 +121,7 @@ public class TrackControllerUnitTest {
     @Test
     void getTracksByDurationGreaterThan_RunsSuccessfully(){
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(List.of(track1))
                 .when(trackService).getTracksByDurationGreaterThan(anyDouble());
 
@@ -132,7 +132,7 @@ public class TrackControllerUnitTest {
     @Test
     void getTracksByDurationLessThan_RunsSuccessfully(){
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(List.of(track1))
                 .when(trackService).getTracksByDurationLessThan(anyDouble());
 
@@ -143,7 +143,7 @@ public class TrackControllerUnitTest {
     @Test
     void getTracksByDurationEqualsTo_RunsSuccessfully(){
 
-        setUpMockForPricingService();
+
         Mockito.doReturn(List.of(track1))
                 .when(trackService).getTracksByDurationEqualsTo(anyDouble());
 
@@ -169,7 +169,7 @@ public class TrackControllerUnitTest {
         var trackRequest = TrackRequest.builder().title("Hello").artistIds(List.of(1,2)).build();
 
         setUpMockForGetArtistsByListOfIds(artistReturn);
-        setUpMockForPricingService();
+
         Mockito.doReturn(track1)
                 .when(trackService).addEntity(any());
 
@@ -281,9 +281,9 @@ public class TrackControllerUnitTest {
                 .when(artistService).getArtistsById(anyList());
     }
 
-    private void setUpMockForPricingService() {
-        Mockito.doReturn(2.0)
-                .when(pricingProvider).getPrice();
-    }
+//    private void setUpMockForPricingService() {
+//        Mockito.doReturn(2.0)
+//                .when(pricingProvider).getPrice();
+//    }
 
 }

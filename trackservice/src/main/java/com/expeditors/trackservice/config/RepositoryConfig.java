@@ -2,8 +2,8 @@ package com.expeditors.trackservice.config;
 
 import com.expeditors.trackservice.domain.Artist;
 import com.expeditors.trackservice.domain.Track;
-import com.expeditors.trackservice.repository.taskmanagement.TaskManager;
-import com.expeditors.trackservice.repository.taskmanagement.implementation.TaskManagerImpl;
+import com.expeditors.trackservice.repository.inmemory.taskmanagement.TaskManager;
+import com.expeditors.trackservice.repository.inmemory.taskmanagement.implementation.TaskManagerImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
