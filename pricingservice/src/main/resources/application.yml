@@ -1,0 +1,3 @@
+spring:
+  application.name: Pricing Service
+  profiles.active: SSL

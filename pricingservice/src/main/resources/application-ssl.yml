@@ -1,0 +1,19 @@
+server:
+  port: 10002
+  ssl:
+    bundle: "pricing-ssl"
+    enabled-protocols: TLSv1.3 #ensures that only TLS version 1.3 is used for secure communications.
+
+spring:
+  ssl.bundle.jks:
+    pricing-ssl:
+      key:
+        alias: "pricing-ssl"
+        password: "password"
+      keystore:
+        location: "classpath:pricing-ssl.p12"
+        password: "password"
+        type: "PKCS12"
+      truststore:
+        location: "classpath:pricing-store.p12"
+        password: "password"
