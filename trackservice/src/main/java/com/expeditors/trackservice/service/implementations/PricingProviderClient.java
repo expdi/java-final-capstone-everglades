@@ -1,6 +1,7 @@
 package com.expeditors.trackservice.service.implementations;
 
 import com.expeditors.trackservice.service.PricingProvider;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
 import org.springframework.http.ResponseEntity;
@@ -15,10 +16,11 @@ import java.util.Objects;
 @Profile("!test")
 public class PricingProviderClient implements PricingProvider {
 
-    private final Environment env;
-    private static final String PRICING_URL = "http://localhost:10002/pricing";
+
+    private final String env;
+    private static final String PRICING_URL = "http://priceservice:10002/pricing";
     private final RestClient restClient;
-    public PricingProviderClient(Environment env) {
+    public PricingProviderClient(@Value("${credentials}")  String env) {
         this.env = env;
         this.restClient = createClientForAddress();
     }
@@ -40,7 +42,7 @@ public class PricingProviderClient implements PricingProvider {
     }
 
     private RestClient createClientForAddress(){
-        String authHeader = "Basic " + Base64.getEncoder().encodeToString(env.getProperty("CREDENTIALS").getBytes());
+        String authHeader = "Basic " + Base64.getEncoder().encodeToString(env.getBytes());
 
         return RestClient.builder()
                 .baseUrl(PricingProviderClient.PRICING_URL)

@@ -1,5 +1,0 @@
-services:
-  spring-boot:
-    build: .
-    ports:
-      - "10002:10002"

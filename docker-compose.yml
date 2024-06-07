@@ -1,0 +1,42 @@
+services:
+  trackservice:
+    container_name: trackservice
+    image: track-image
+    build:
+      context: trackservice
+    ports:
+      - 8000:8000
+    env_file:
+      - .env
+    environment:
+      - CREDENTIALS=${CREDENTIALS}
+    depends_on:
+      - priceservice
+    networks:
+      - musicinfo
+  priceservice:
+    container_name: priceservice
+    image: price-image
+    build:
+      context: pricingservice
+    env_file:
+      - .env
+    ports:
+      - 10002:10002
+    networks:
+      - musicinfo
+    expose:
+      - 10002
+  db_track:
+    image: postgres:16
+    container_name: db_track
+    environment:
+      POSTGRES_DB: tracks_db
+      POSTGRES_USER: larku
+      POSTGRES_PASSWORD: larku
+    ports:
+      - 5433:5432
+    networks:
+      - musicinfo
+networks:
+  musicinfo:

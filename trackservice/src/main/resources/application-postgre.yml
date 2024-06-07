@@ -17,6 +17,6 @@ spring:
     defer-datasource-initialization: true
 
   datasource:
-    url: jdbc:postgresql://localhost:5433/tracks_db
+    url: jdbc:postgresql://db_track:5432/tracks_db
     username: larku
     password: larku
