@@ -4,7 +4,7 @@ credentials: ${CREDENTIALS}
 spring:
   application.name: Track Service
   profiles:
-    active: JPA, POSTGRE, RUNNER
+    active: JPA, postgre
 
   jpa:
     show-sql: true
