@@ -1,7 +1,12 @@
 package com.expeditors.trackservice.config;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.web.client.RestClientSsl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -14,6 +19,9 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.client.RestClient;
+
+import static com.expeditors.trackservice.config.profiles.Profiles.SSL;
 
 @Configuration
 @EnableWebSecurity
@@ -34,9 +42,7 @@ public class SecurityConfig {
               .roles("USER")
               .build();
 
-      var userDetailsService = new InMemoryUserDetailsManager(normaluser);
-
-      return userDetailsService;
+       return new InMemoryUserDetailsManager(normaluser);
    }
 
    @Bean
@@ -48,5 +54,6 @@ public class SecurityConfig {
               .csrf(AbstractHttpConfigurer::disable)
               .build();
    }
+
 
 }

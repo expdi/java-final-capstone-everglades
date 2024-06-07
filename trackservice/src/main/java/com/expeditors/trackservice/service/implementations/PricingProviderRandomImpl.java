@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+import static com.expeditors.trackservice.config.profiles.Profiles.PRICING_PROVIDER_LOCAL;
+
 @Service
-@Profile("test")
+@Profile(PRICING_PROVIDER_LOCAL)
 public class PricingProviderRandomImpl
         implements PricingProvider {
 

@@ -2,13 +2,19 @@ package com.expeditors.trackservice.config.profiles;
 
 public class Profiles {
 
-    public static final String IN_MEMORY = "IN_MEMORY";
-    public static final String JPA = "JPA";
+    public static final String IN_MEMORY = "in_memory";
+    public static final String JPA = "jpa";
+
+    //Pricing Service Provider
+    public static final String PRICING_PROVIDER_LOCAL = "pricing_provider_local";
+    public static final String PRICING_PROVIDER_CLIENT = "pricing_provider_client";
 
     //DB
-    public static final String POSTGRE = "POSTGRE";
-    public static final String H2 = "H2";
+    public static final String POSTGRES = "postgres";
+    public static final String H2 = "h2";
 
-    public static final String RUNNER  = "RUNNER";
+    public static final String RUNNER  = "runner";
+
+    public static final String SSL = "ssl";
 }
 

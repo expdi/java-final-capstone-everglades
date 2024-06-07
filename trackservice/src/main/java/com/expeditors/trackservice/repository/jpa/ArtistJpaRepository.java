@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+import static com.expeditors.trackservice.config.profiles.Profiles.JPA;
+
 @Repository
-@Profile("JPA")
+@Profile(JPA)
 public interface ArtistJpaRepository extends JpaRepository<Artist, Integer>{
 
     @Query("SELECT a FROM Artist a LEFT JOIN FETCH a.trackList WHERE a.firstName = :name")

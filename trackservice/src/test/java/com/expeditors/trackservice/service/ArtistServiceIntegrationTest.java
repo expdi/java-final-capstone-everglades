@@ -16,14 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
-@ActiveProfiles(profiles = {JPA, H2})
+@ActiveProfiles(profiles = {JPA, PRICING_PROVIDER_LOCAL, H2})
 @Sql(
         scripts = "/sql/postgres/schema.sql",
         executionPhase = Sql.ExecutionPhase.BEFORE_TEST_CLASS
 )
 class ArtistJpaServiceIntegrationTest extends ArtistServiceIntegrationTest {}
 
-@ActiveProfiles(profiles = {IN_MEMORY})
+@ActiveProfiles(profiles = {IN_MEMORY, PRICING_PROVIDER_LOCAL})
 class ArtistInMemoryServiceIntegrationTest extends ArtistServiceIntegrationTest{}
 
 @SpringBootTest(webEnvironment = NONE)

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+import static com.expeditors.trackservice.config.profiles.Profiles.JPA;
+
 @Repository
-@Profile("JPA")
+@Profile(JPA)
 public class ArtistJpaRepositoryAdapter implements ArtistRepository {
 
     private final ArtistJpaRepository repo;

@@ -1,0 +1,19 @@
+server:
+  port: 10005
+  ssl:
+    bundle: "track-ssl"
+    enabled-protocols: TLSv1.3 #ensures that only TLS version 1.3 is used for secure communications.
+
+spring:
+  ssl.bundle.jks:
+    track-ssl:
+      key:
+        alias: "track-ssl"
+        password: "password"
+      keystore:
+        location: "classpath:track-ssl.p12"
+        password: "password"
+        type: "PKCS12"
+      truststore:
+        location: "classpath:track-store.p12"
+        password: "password"
