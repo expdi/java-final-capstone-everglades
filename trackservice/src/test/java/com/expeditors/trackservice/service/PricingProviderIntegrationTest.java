@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
-import static com.expeditors.trackservice.config.profiles.Profiles.JPA;
-import static com.expeditors.trackservice.config.profiles.Profiles.PRICING_PROVIDER_CLIENT;
+import static com.expeditors.trackservice.config.profiles.Profiles.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 
 @SpringBootTest(webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
-@ActiveProfiles( profiles = {JPA, PRICING_PROVIDER_CLIENT})
+@ActiveProfiles( profiles = {JPA, PRICING_PROVIDER_CLIENT, SSL})
 public class PricingProviderIntegrationTest {
 
     @Autowired

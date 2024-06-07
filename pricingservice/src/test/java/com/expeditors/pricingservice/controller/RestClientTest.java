@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.autoconfigure.web.client.RestClientSsl;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.client.RestClient;
 
@@ -13,28 +14,21 @@ import java.net.URI;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class RestClientTest {
 
-    @Value("${credentials}")
-    private String authHeader;
+    @LocalServerPort
+    private int port;
 
-    RestClient getRestClient(){
-
-        return RestClient.builder()
-                .baseUrl("https://localhost:10002/pricing")
-                .defaultHeader("Accept", "application/json")
-                .defaultHeader("Content-Type", "application/json")
-                .defaultHeader("Authorization", authHeader)
-                .build();
-    }
+    @Autowired
+    private RestClient restClient;
 
     @Test
     void getBothLimits_ShouldWorkWithSSL(){
 
-        var restClient = getRestClient();
         var result = restClient
                 .get()
+                .uri(URI.create("https://localhost:" + port + "/pricing"))
                 .retrieve()
                 .toEntity(Double.class);
 
