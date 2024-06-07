@@ -1,5 +1,6 @@
 package com.expeditors.pricingservice.controller;
 
+import java.util.Base64;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class RestClientTest {
 
-    @Value("${credentials}")
+//    @Value("${credentials}")
     private String authHeader;
 
     RestClient getRestClient(){
+        authHeader = "Basic " + Base64.getEncoder()
+              .encodeToString("administrator:password".getBytes());
 
         return RestClient.builder()
                 .baseUrl("https://localhost:10002/pricing")

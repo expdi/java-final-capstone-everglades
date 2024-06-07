@@ -3,7 +3,7 @@ credentials: ${CREDENTIALS}
 spring:
   application.name: Track Service
   profiles:
-    active: JPA, POSTGRES, RUNNER, PRICING_PROVIDER_LOCAL, SSL
+    active: JPA, POSTGRES, RUNNER, PRICING_PROVIDER_LOCAL, ssl
   jpa:
     show-sql: true
 
