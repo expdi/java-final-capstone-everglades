@@ -1,4 +1,4 @@
-package com.expeditors.pricingservice.jconfig;
+package com.expeditors.pricingservice.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

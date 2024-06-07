@@ -19,7 +19,7 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.NONE;
 
 @SpringBootTest(webEnvironment = NONE)
-@ActiveProfiles(profiles = {JPA, H2 })
+@ActiveProfiles(profiles = {JPA, PRICING_PROVIDER_LOCAL, H2})
 public class TrackJpaRepositoryAdapterTest {
 
     @Autowired

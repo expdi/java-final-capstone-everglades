@@ -1,11 +1,9 @@
-server.port: 8000
 credentials: ${CREDENTIALS}
 
 spring:
   application.name: Track Service
   profiles:
-    active: JPA, POSTGRE, RUNNER
-
+    active: jpa, postgres, runner, pricing_provider_client, ssl
   jpa:
     show-sql: true
 

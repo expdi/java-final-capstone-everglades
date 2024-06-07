@@ -18,6 +18,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 import static com.expeditors.trackservice.config.profiles.Profiles.IN_MEMORY;
+import static com.expeditors.trackservice.config.profiles.Profiles.PRICING_PROVIDER_LOCAL;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,7 +26,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyInt;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)
-@ActiveProfiles(profiles = IN_MEMORY)
+@ActiveProfiles(profiles = { IN_MEMORY, PRICING_PROVIDER_LOCAL })
 public class ArtistRepositoryTest {
 
     Artist artist1;
