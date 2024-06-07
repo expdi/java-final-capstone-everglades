@@ -1,4 +1,4 @@
 FROM openjdk:21
-ADD target/pricingservice-0.0.1-SNAPSHOT.jar pricing-service.jar
+ADD target/pricingservice-0.0.1-SNAPSHOT.jar pricingservice.jar
 EXPOSE 10001
-ENTRYPOINT ["java","-jar","/pricing-service.jar"]
+ENTRYPOINT ["java","-jar","/pricingservice.jar"]
